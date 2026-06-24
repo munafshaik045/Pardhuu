@@ -14,8 +14,9 @@ body{
     min-height:100vh;
     background:linear-gradient(-45deg,#ff4d6d,#ff758f,#ff9ff3,#6c5ce7);
     background-size:400% 400%;
-    animation:gradient 10s ease infinite;
-    overflow:hidden;
+    animation:gradient 12s ease infinite;
+    overflow-x:hidden;
+    overflow-y:auto;
     color:white;
 }
 
@@ -28,7 +29,7 @@ body{
 .container{
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     min-height:100vh;
     padding:20px;
 }
@@ -40,13 +41,13 @@ body{
     background:rgba(255,255,255,0.12);
     backdrop-filter:blur(15px);
     border-radius:30px;
-    padding:40px;
-    box-shadow:0 0 30px rgba(255,255,255,0.2);
+    padding:35px;
+    margin:20px 0;
+    box-shadow:0 0 30px rgba(255,255,255,0.25);
 }
 
 h1{
     font-size:4rem;
-    margin-bottom:15px;
     animation:glow 2s infinite alternate;
 }
 
@@ -56,39 +57,36 @@ h1{
     }
     to{
         text-shadow:0 0 25px #fff,
-                    0 0 45px #ff9ff3;
+                    0 0 50px #ff9ff3;
     }
 }
 
 .subtitle{
     font-size:1.4rem;
+    margin-top:15px;
     margin-bottom:25px;
 }
 
 .message{
     font-size:1.2rem;
-    line-height:1.8;
+    line-height:1.9;
 }
 
 .eyes{
-    margin-top:25px;
-    padding:20px;
-    border-radius:20px;
+    margin-top:30px;
+    padding:25px;
+    border-radius:25px;
     background:rgba(255,255,255,0.12);
     animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.03);
-    }
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.03);}
 }
 
 .eyes h2{
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 .btn{
@@ -101,7 +99,7 @@ h1{
     font-size:18px;
     font-weight:bold;
     cursor:pointer;
-    transition:.3s;
+    transition:0.3s;
 }
 
 .btn:hover{
@@ -110,11 +108,11 @@ h1{
 
 #wish{
     display:none;
-    margin-top:25px;
+    margin-top:30px;
     padding:25px;
     border-radius:20px;
     background:rgba(255,255,255,0.15);
-    animation:fadeIn 2s;
+    animation:fadeIn 1.5s;
 }
 
 @keyframes fadeIn{
@@ -128,11 +126,18 @@ h1{
     }
 }
 
+.footer{
+    margin-top:25px;
+    font-size:1rem;
+    opacity:0.9;
+}
+
 .heart{
     position:fixed;
     font-size:25px;
     animation:floatUp linear forwards;
     pointer-events:none;
+    z-index:999;
 }
 
 @keyframes floatUp{
@@ -146,30 +151,76 @@ h1{
     }
 }
 
-.footer{
-    margin-top:25px;
-    font-size:1rem;
-    opacity:.9;
+/* Floating Background Hearts */
+.bg-heart{
+    position:fixed;
+    color:rgba(255,255,255,0.2);
+    font-size:25px;
+    animation:bgFloat 15s linear infinite;
+    z-index:-1;
 }
-</style></head><body><div class="container"><div class="card"><h1>🎂 Happy Birthday Pardhuu ❤️</h1><p class="subtitle">
-Wishing you endless happiness, laughter and beautiful memories ✨
-</p><div class="message">
-Dear Pardhuu ❤️,<br><br>Today is your special day and I just want to remind you how amazing you are.
+
+@keyframes bgFloat{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    .subtitle{
+        font-size:1rem;
+    }
+
+    .message,
+    .eyes p,
+    #wish p{
+        font-size:1rem;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+</style></head><body><div class="container"><div class="card"><h1>🎂 Happy Birthday My Special Pardhuu ❤️</h1><p class="subtitle">
+✨ Wishing You Endless Happiness, Love & Beautiful Memories ✨
+</p><div class="message">Dear Pardhuu ❤️,<br><br>
+
+Today is your special day and I just want to remind you how amazing you are.
 
 Your smile can brighten any day,
 your kindness makes people feel comfortable,
 and your presence makes every moment feel a little more special. 🌹
 
-</div><div class="eyes"><h2>👀 Your Eyes ✨</h2><p>
-Your eyes are incredibly beautiful,
-filled with magic and emotions.Every glance feels like a story,
+<br><br>
+
+You deserve all the happiness,
+success,
+love,
+and beautiful memories this world can offer.
+
+</div><div class="eyes"><h2>👀 Your Eyes ✨</h2><p>Your eyes are incredibly beautiful,
+filled with magic and emotions.
+
+Every glance feels like a story,
 every sparkle feels like a dream,
 and every time I look into them,
-I find comfort, happiness and something truly special. ❤️
+I find comfort, happiness, and something truly special. ❤️
 
 </p></div><button class="btn" onclick="showWish()">
-Open My Heart ❤️
-</button><div id="wish"><h2>💖 A Special Message For You 💖</h2><p style="line-height:1.8;margin-top:15px;">There are some people who enter our lives and make everything brighter.
+💖 Open My Heart 💖
+</button><div id="wish"><h2>💌 A Special Message For You 💌</h2><p style="line-height:1.9; margin-top:15px;">There are some people who enter our lives and make everything brighter.
 
 You are one of those people. ❤️
 
@@ -191,14 +242,14 @@ you will always be someone very special.
 ❤️✨💖
 
 </p></div><div class="footer">
-Made with ❤️ for Pardhuu
+✨ Made With Love For Someone Very Special ❤️ ✨
 </div></div></div><script>
 
 function showWish(){
 
 document.getElementById("wish").style.display="block";
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 createHeart();
 }
 
@@ -210,7 +261,7 @@ const heart=document.createElement("div");
 
 heart.className="heart";
 
-const hearts=["❤️","💖","💕","💗","💘"];
+const hearts=["❤️","💖","💕","💗","💘","💝"];
 
 heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
 
@@ -230,7 +281,30 @@ heart.remove();
 
 }
 
-setInterval(createHeart,700);
+function createBackgroundHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="bg-heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+heart.style.animationDuration=(10+Math.random()*10)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},20000);
+
+}
+
+setInterval(createHeart,1000);
+setInterval(createBackgroundHeart,700);
 
 </script></body>
 </html>
